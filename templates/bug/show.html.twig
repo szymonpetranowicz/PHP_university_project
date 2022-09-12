@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'Bug'|trans({'%id%': bug.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'Bug'|trans({'%id%': bug.id|default('')}) }}</h1>
+    {% if bug is defined and bug|length %}
+        <dl class="dl-horizontal">
+            <dt>{{ 'ID'|trans }}</dt>
+            <dd>{{ bug.id }}</dd>
+            <dt>{{ 'Utworzony'|trans }}</dt>
+            <dd>{{ bug.createdAt|format_date('long') }}</dd>
+            <dt>{{ 'Ostatnia aktualizacja'|trans }}</dt>
+            <dd>{{ bug.updatedAt|format_date('long') }}</dd>
+            <dt>{{ 'Tytuł'|trans }}</dt>
+            <dd>{{  bug.title }}</dd>
+            <dt>{{ 'Opis'|trans }}</dt>
+            <dd>{{  bug.description }}</dd>
+            <dt>{{ 'Kategoria'|trans }}</dt>
+            <dd>{{  bug.category.title }}</dd>
+            <dt>{{ 'Status'|trans }}</dt>
+            {% if bug.status == true %}
+                <dd>Done</dd>
+            {% endif %}
+            {% if bug.status == false %}
+                <dd>To do</dd>
+            {% endif %}
+                </dl>
+        <p>
+            <a href="{{ url('bug_index') }}" title="{{ 'Wróć'|trans }}">
+                {{ 'Wróć'|trans }}
+            </a>
+        </p>
+    {% else %}
+        <p>
+            {{ 'Nie znaleziono rekordów'|trans }}
+        </p>
+    {% endif %}
+{% endblock %}

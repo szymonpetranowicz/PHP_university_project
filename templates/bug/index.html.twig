@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'Bugi'|trans }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'Bugi'|trans }}</h1>
+    {% if pagination is defined and pagination.items|length %}
+
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(pagination, 'ID'|trans, 'bug.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Utworzone'|trans, 'bug.createdAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Aktualizacja'|trans, 'bug.updatedAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Tytuł'|trans, 'bug.title') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Opis'|trans, 'bug.description') }}</th>
+                <th>{{ 'Kategoria'|trans }}</th>
+                <th>{{ 'Status'|trans }}</th>
+                <th>{{ ''|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for bug in pagination.items %}
+                <tr>
+                    <td>{{ bug.id }}</td>
+                    <td>{{ bug.createdAt|format_date('long') }}</td>
+                    <td>{{ bug.updatedAt|format_date('long') }}</td>
+                    <td>{{ bug.title }}</td>
+                    <td>{{ bug.description }}</td>
+                    <th><a href="{{ url('bug_index', {'filters.category_id' : bug.category.id}) }}" title="{{ bug.category.title }}">
+                            {{ bug.category.title }}
+                        </a></th>
+                    {% if bug.status == true %}
+                        <td>Done</td>
+                    {% endif %}
+                    {% if bug.status == false %}
+                        <td>To do</td>
+                    {% endif %}
+                    <td>
+                        {% if is_granted('VIEW', bug) %}
+                            <a class="btn btn-outline-primary" href="{{ url('bug_show', {id: bug.id}) }}" title="{{ 'action.show'|trans }}">
+                                {{ 'Pokaż'|trans }}
+                            </a>
+                        {% endif %}
+                        {% if is_granted('EDIT', bug) %}
+                            <a class="btn btn-outline-success" href="{{ url('bug_edit', {id: bug.id}) }}" title="{{ 'action.edit'|trans }}">
+                                {{ 'Edytuj'|trans }}
+                            </a>
+                        {% endif %}
+                        {% if is_granted('DELETE', bug) %}
+                            <a class="btn btn-outline-danger" href="{{ url('bug_delete', {id: bug.id}) }}" title="{{ 'action.delete'|trans }}">
+                                {{ 'Usuń'|trans }}
+                            </a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="btn btn-outline-success" href="{{ url('bug_create')}}" title="{{ 'action.create'|trans }}">
+            {{ 'Nowy bug'|trans }}
+        </a>
+        <a class="btn btn-outline-primary" href="{{ url('category_index')}}" title="{{ 'action.create'|trans }}">
+            {{ 'Kategorie'|trans }}
+        </a>
+        <a class="btn btn-outline-primary" href="{{ url('user_index')}}" title="{{ 'action.create'|trans }}">
+            {{ 'Użytkownicy'|trans }}
+        </a>
+    {% endif %}
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+    {% else %}
+        <p>
+            {{ 'Brak rekordów'|trans }}
+        </p>
+    {% endif %}
+{% endblock %}
