@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Login form authenticator.
  */
@@ -47,6 +48,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     private UrlGeneratorInterface $urlGenerator;
 
     /**
+     * @param UrlGeneratorInterface $urlGenerator
      * Constructor.
      */
     public function __construct(UrlGeneratorInterface $urlGenerator)
@@ -64,6 +66,8 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
      *
      * You may throw any AuthenticationException in this method in case of error (e.g.
      * a UserNotFoundException when the user cannot be found).
+     *
+     * @param Request $request
      *
      * @return Passport Passport
      *

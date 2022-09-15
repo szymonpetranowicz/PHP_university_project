@@ -1,4 +1,7 @@
 <?php
+/**
+ * User service.
+ */
 
 namespace App\Service;
 
@@ -9,6 +12,9 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
+/**
+ * UserService class.
+ */
 class UserService implements UserServiceInterface
 {
     /**
@@ -27,7 +33,7 @@ class UserService implements UserServiceInterface
      * @param UserRepository     $userRepository User repository
      * @param PaginatorInterface $paginator      Paginator
      */
-    public function __construct(UserRepository $userRepository, PaginatorInterface $paginator, CategoryServiceInterface $categoryService)
+    public function __construct(UserRepository $userRepository, PaginatorInterface $paginator)
     {
         $this->userRepository = $userRepository;
         $this->paginator = $paginator;
@@ -50,7 +56,9 @@ class UserService implements UserServiceInterface
     }
 
     /**
-     * Used to upgrade (rehash) the user's password automatically over time.
+     * @param PasswordAuthenticatedUserInterface $user
+     * @param $newHashedPassword
+     * Used to upgrade (rehash) the user's password automatically over time
      */
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {

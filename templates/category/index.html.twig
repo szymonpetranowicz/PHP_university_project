@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'Kategorie'|trans }}
+    {{ 'title.category.index'|trans }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'Kategorie'|trans }}</h1>
+    <h1>{{ 'categories'|trans }}</h1>
     {% if pagination is defined and pagination.items|length %}
 
         <div class="navigation text-center">
@@ -15,11 +15,11 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(pagination, 'ID'|trans, 'category.id') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Utorzone'|trans, 'category.createdAt') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Aktualizacja'|trans, 'category.updatedAt') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'Tytuł'|trans, 'category.title') }}</th>
-                <th>{{ ''|trans }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'id'|trans, 'category.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'createdAt'|trans, 'category.createdAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'updatedAt'|trans, 'category.updatedAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'title'|trans, 'category.title') }}</th>
+                <th>{{ 'action'|trans }}</th>
             </tr>
             </thead>
             <tbody>
@@ -32,13 +32,13 @@
 
                     <td>
                             <a class="btn btn-outline-primary" href="{{ url('category_show', {id: category.id}) }}" title="{{ 'action.show'|trans }}">
-                                {{ 'Pokaż'|trans }}
+                                {{ 'action.show'|trans }}
                             </a>
                             <a class="btn btn-outline-success" href="{{ url('category_edit', {id: category.id}) }}" title="{{ 'action.edit'|trans }}">
-                                {{ 'Edytuj'|trans }}
+                                {{ 'action.edit'|trans }}
                             </a>
                             <a class="btn btn-outline-danger" href="{{ url('category_delete', {id: category.id}) }}" title="{{ 'action.delete'|trans }}">
-                                {{ 'Usuń'|trans }}
+                                {{ 'action.delete'|trans }}
                             </a>
                     </td>
                 </tr>
@@ -47,13 +47,13 @@
             </tbody>
         </table>
         <a class="btn btn-outline-success"  href="{{ url('category_create')}}" title="{{ 'action.create'|trans }}">
-            {{ 'Nowa kategoria'|trans }}
+            {{ 'new.category'|trans }}
         </a>
         <a class="btn btn-outline-primary" href="{{ url('bug_index')}}" title="{{ 'action.create'|trans }}">
-            {{ 'Bugi'|trans }}
+            {{ 'bugs'|trans }}
         </a>
         <a class="btn btn-outline-primary" href="{{ url('user_index')}}" title="{{ 'action.create'|trans }}">
-            {{ 'Użytkownicy'|trans }}
+            {{ 'users'|trans }}
         </a>
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
@@ -61,7 +61,7 @@
 
     {% else %}
         <p>
-            {{ 'Brak rekordów'|trans }}
+            {{ 'empty.list'|trans }}
         </p>
     {% endif %}
 {% endblock %}

@@ -1,9 +1,15 @@
 <?php
+/**
+ * User service interface.
+ */
 
 namespace App\Service;
 
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
+/**
+ * User service interface.
+ */
 interface UserServiceInterface
 {
     /**

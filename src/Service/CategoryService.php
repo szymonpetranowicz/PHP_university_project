@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Category service.
  */
@@ -66,11 +67,12 @@ class CategoryService implements CategoryServiceInterface
      */
     public function save(Category $category): void
     {
-        if (null == $category->getId()) {
-            $category->setCreatedAt(new \DateTimeImmutable());
+        if ($category->getId()) {
+            $category->setUpdatedAt(new \DateTimeImmutable());
+            $this->categoryRepository->save($category);
         }
-        $category->setUpdatedAt(new \DateTimeImmutable());
-        $this->categoryRepository->save($category);
+
+        $category->setCreatedAt(new \DateTimeImmutable());
     }
 
     /**

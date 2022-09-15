@@ -1,11 +1,13 @@
 <?php
 
+/**
+ * User Repository.
+ */
+
 namespace App\Repository;
 
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
-use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -19,16 +21,30 @@ use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
  */
 class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
+    /**
+     * Items per page.
+     *
+     * Use constants to define configuration options that rarely change instead
+     * of specifying them in app/config/config.yml.
+     * See https://symfony.com/doc/current/best_practices.html#configuration
+     *
+     * @constant int
+     */
     public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
+    /**
+     * @param ManagerRegistry $registry param
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, User::class);
-    }
+    }// end __construct()
 
     /**
-     * @throws ORMException
-     * @throws OptimisticLockException
+     * @param User $entity param
+     * @param bool $flush  param
+     *
+     * @return void return
      */
     public function add(User $entity, bool $flush = true): void
     {
@@ -36,11 +52,13 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         if ($flush) {
             $this->_em->flush();
         }
-    }
+    }// end add()
 
     /**
-     * @throws ORMException
-     * @throws OptimisticLockException
+     * @param User $entity param
+     * @param bool $flush  param
+     *
+     * @return void return
      */
     public function remove(User $entity, bool $flush = true): void
     {
@@ -48,10 +66,15 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         if ($flush) {
             $this->_em->flush();
         }
-    }
+    }// end remove()
 
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
+     *
+     *@param PasswordAuthenticatedUserInterface $user              param
+     * @param string                             $newHashedPassword param
+     *
+     * @return void return
      */
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {
@@ -62,7 +85,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $user->setPassword($newHashedPassword);
         $this->_em->persist($user);
         $this->_em->flush();
-    }
+    }// end upgradePassword()
 
     /**
      * Query all records.
@@ -72,33 +95,5 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     public function queryAll(): array
     {
         return $this->findAll();
-    }
-    // /**
-    //  * @return User[] Returns an array of User objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?User
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
-}
+    }// end queryAll()
+}// end class

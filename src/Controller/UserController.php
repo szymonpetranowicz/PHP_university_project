@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * User controller.
+ */
+
 namespace App\Controller;
 
 use App\Entity\User;
@@ -13,6 +17,9 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+/**
+ * UserController Class.
+ */
 #[Route('/user')]
 class UserController extends AbstractController
 {
@@ -36,7 +43,7 @@ class UserController extends AbstractController
     {
         $this->userService = $userService;
         $this->translator = $translator;
-    }
+    }// end __construct()
 
     /**
      * Index action.
@@ -53,48 +60,57 @@ class UserController extends AbstractController
         );
 
         return $this->render('user/index.html.twig', ['pagination' => $pagination]);
-    }
+    }// end index()
 
     /**
      * Edit action.
      *
-     * @param Request $request HTTP request
-     * @param User    $user    User entity
+     * @param Request                     $request        HTTP request
+     * @param User                        $user           User entity
+     * @param UserPasswordHasherInterface $passwordHasher
      *
      * @return Response HTTP response
      */
     #[Route('/{id}/edit', name: 'user_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, User $user, UserPasswordHasherInterface $passwordHasher): Response
     {
-        if (null == $this->getUser()) {
-            $this->addFlash(
-                'warning',
-                $this->translator->trans('You are not able to reach this site')
+        if ($this->getUser()) {
+            $form = $this->createForm(
+                UserType::class,
+                $user,
+                [
+                    'method' => 'PUT',
+                    'action' => $this->generateUrl('user_edit', ['id' => $user->getId()]),
+                ]
             );
+            $form->handleRequest($request);
 
-            return $this->redirectToRoute('user_index');
-        }
-        $form = $this->createForm(UserType::class, $user, [
-            'method' => 'PUT',
-            'action' => $this->generateUrl('user_edit', ['id' => $user->getId()]),
-        ]);
-        $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $newHashedPassword = $passwordHasher->hashPassword($user, $form->getData()->getPassword());
+                $this->userService->upgradePassword($user, $newHashedPassword);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $newHashedPassword = $passwordHasher->hashPassword($user, $form->getData()->getPassword());
-            $this->userService->upgradePassword($user, $newHashedPassword);
+                $this->addFlash(
+                    'success',
+                    $this->translator->trans('edited.successfully')
+                );
 
-            $this->addFlash(
-                'success',
-                $this->translator->trans('Password editted sucessfully')
+                return $this->redirectToRoute('user_index');
+            }
+
+            return $this->render(
+                'user/edit.html.twig',
+                [
+                    'form' => $form->createView(),
+                    'user' => $user,
+                ]
             );
-
-            return $this->redirectToRoute('user_index');
         }
 
-        return $this->render('user/edit.html.twig', [
-            'form' => $form->createView(),
-            'user' => $user,
-        ]);
-    }
-}
+        $this->addFlash(
+            'warning',
+            $this->translator->trans('you.are.not.able.to.reach')
+        );
+
+        return $this->redirectToRoute('user_index');
+    }// end edit()
+}// end class

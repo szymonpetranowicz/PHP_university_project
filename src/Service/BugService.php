@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Bug service.
  */
@@ -32,11 +33,11 @@ class BugService implements BugServiceInterface
     /**
      * Constructor.
      *
-     * @param CategoryServiceInterface $categoryService Category service
-     * @param BugRepository            $bugRepository   Bug repository
-     * @param PaginatorInterface       $paginator       Paginator
+     * @param BugRepository      $bugRepository   Bug repository
+     * @param PaginatorInterface $paginator       Paginator
+     * @param CategoryService    $categoryService Category service
      */
-    public function __construct(BugRepository $bugRepository, PaginatorInterface $paginator, CategoryServiceInterface $categoryService)
+    public function __construct(BugRepository $bugRepository, PaginatorInterface $paginator, CategoryService $categoryService)
     {
         $this->categoryService = $categoryService;
         $this->bugRepository = $bugRepository;

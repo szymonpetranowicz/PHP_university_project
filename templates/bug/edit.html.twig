@@ -1,6 +1,6 @@
 {% include 'default/_form.html.twig' with {
-    page_title: 'Edytuj'|trans({'%id%': bug.id|default('')}),
+    page_title: 'title.bug.edit'|trans({'%id%': bug.id|default('')}),
     form: form,
-    submit_label: 'Edytuj'|trans,
+    submit_label: 'edit'|trans,
     back_to_list_path: 'bug_index',
 } %}

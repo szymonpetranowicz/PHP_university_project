@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'Administration'|trans }}
+    {{ 'administration'|trans }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'Administration'|trans }}</h1>
+    <h1>{{ 'administration'|trans }}</h1>
     {% if pagination is defined and pagination.items|length %}
 
         <div class="navigation text-center">
@@ -28,7 +28,7 @@
 
                     <td>
                         <a class="btn btn-outline-success" href="{{ url('user_edit', {id: user.id}) }}" title="{{ 'action.edit'|trans }}">
-                            {{ 'Edit password'|trans }}
+                            {{ 'edit'|trans }}
                         </a>
                     </td>
                 </tr>
@@ -41,10 +41,10 @@
 {#                {{ 'action.create'|trans }}#}
 {#            </a>#}
             <a class="btn btn-outline-primary" href="{{ url('category_index')}}" title="{{ 'action.create'|trans }}">
-                {{ 'Categories'|trans }}
+                {{ 'categories'|trans }}
             </a>
             <a class="btn btn-outline-primary" href="{{ url('bug_index')}}" title="{{ 'action.create'|trans }}">
-                {{ 'Bugs'|trans }}
+                {{ 'bugs'|trans }}
             </a>
         {% endif %}
         <div class="navigation text-center">

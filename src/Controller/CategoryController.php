@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Category controller.
  */
@@ -33,14 +34,14 @@ class CategoryController extends AbstractController
     /**
      * Constructor.
      *
-     * @param CategoryServiceInterface $categoryService Category service
-     * @param TranslatorInterface      $translator      Translator
+     * @param CategoryServiceInterface $bugService Category service
+     * @param TranslatorInterface      $translator Translator
      */
     public function __construct(CategoryServiceInterface $bugService, TranslatorInterface $translator)
     {
         $this->categoryService = $bugService;
         $this->translator = $translator;
-    }
+    }// end __construct()
 
     /**
      * Index action.
@@ -57,7 +58,7 @@ class CategoryController extends AbstractController
         );
 
         return $this->render('category/index.html.twig', ['pagination' => $pagination]);
-    }
+    }// end index()
 
     /**
      * Show action.
@@ -75,7 +76,7 @@ class CategoryController extends AbstractController
     public function show(Category $category): Response
     {
         return $this->render('category/show.html.twig', ['category' => $category]);
-    }
+    }// end show()
 
     /**
      * Create action.
@@ -100,7 +101,7 @@ class CategoryController extends AbstractController
 
             $this->addFlash(
                 'success',
-                $this->translator->trans('New category has been successfully added to an category list!')
+                $this->translator->trans('added.successfully')
             );
 
             return $this->redirectToRoute('category_index');
@@ -110,7 +111,7 @@ class CategoryController extends AbstractController
             'category/create.html.twig',
             ['form' => $form->createView()]
         );
-    }
+    }// end create()
 
     /**
      * Edit action.
@@ -123,10 +124,14 @@ class CategoryController extends AbstractController
     #[Route('/{id}/edit', name: 'category_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, Category $category): Response
     {
-        $form = $this->createForm(CategoryType::class, $category, [
-            'method' => 'PUT',
-            'action' => $this->generateUrl('category_edit', ['id' => $category->getId()]),
-        ]);
+        $form = $this->createForm(
+            CategoryType::class,
+            $category,
+            [
+                'method' => 'PUT',
+                'action' => $this->generateUrl('category_edit', ['id' => $category->getId()]),
+            ]
+        );
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -134,7 +139,7 @@ class CategoryController extends AbstractController
 
             $this->addFlash(
                 'success',
-                $this->translator->trans('Category has been successfully edited')
+                $this->translator->trans('edited.successfully')
             );
 
             return $this->redirectToRoute('category_index');
@@ -147,7 +152,7 @@ class CategoryController extends AbstractController
                 'category' => $category,
             ]
         );
-    }
+    }// end edit()
 
     /**
      * Delete action.
@@ -163,16 +168,20 @@ class CategoryController extends AbstractController
         if (!$this->categoryService->canBeDeleted($category)) {
             $this->addFlash(
                 'warning',
-                $this->translator->trans('Category contains bug')
+                $this->translator->trans('category.contains.bug')
             );
 
             return $this->redirectToRoute('category_index');
         }
 
-        $form = $this->createForm(CategoryType::class, $category, [
-            'method' => 'DELETE',
-            'action' => $this->generateUrl('category_delete', ['id' => $category->getId()]),
-        ]);
+        $form = $this->createForm(
+            CategoryType::class,
+            $category,
+            [
+                'method' => 'DELETE',
+                'action' => $this->generateUrl('category_delete', ['id' => $category->getId()]),
+            ]
+        );
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -180,7 +189,7 @@ class CategoryController extends AbstractController
 
             $this->addFlash(
                 'success',
-                $this->translator->trans('Category deleted successfully')
+                $this->translator->trans('deleted.successfully')
             );
 
             return $this->redirectToRoute('category_index');
@@ -193,5 +202,5 @@ class CategoryController extends AbstractController
                 'category' => $category,
             ]
         );
-    }
-}
+    }// end delete()
+}// end class

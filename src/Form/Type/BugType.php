@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Bug type.
  */
@@ -25,6 +26,7 @@ class BugType extends AbstractType
      * This method is called for each type in the hierarchy starting from the
      * top most type. Type extensions can further modify the form.
      *
+     * @param FormBuilderInterface $builder
      * @param array<string, mixed> $options
      *
      * @see FormTypeExtensionInterface::buildForm()
@@ -38,7 +40,8 @@ class BugType extends AbstractType
                 'label' => 'Tytuł',
                 'required' => true,
                 'attr' => ['max_length' => 64],
-            ]);
+            ]
+        );
         $builder->add(
             'description',
             TextType::class,
@@ -46,7 +49,8 @@ class BugType extends AbstractType
                 'label' => 'Opis',
                 'required' => true,
                 'attr' => ['max_length' => 255],
-            ]);
+            ]
+        );
 
         $builder->add(
             'category',
@@ -59,18 +63,21 @@ class BugType extends AbstractType
                 'label' => 'Kategoria',
                 'placeholder' => 'label.none',
                 'required' => true,
-            ]);
+            ]
+        );
         $builder->add(
-          'status',
-          CheckboxType::class,
-          [
+            'status',
+            CheckboxType::class,
+            [
               'label' => 'Status',
               'required' => false,
-          ]);
+            ]
+        );
     }
 
     /**
-     * Configures the options for this type.
+     * @param optionsResolver $resolver
+     *                                  Configures the options for this type
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
@@ -82,6 +89,7 @@ class BugType extends AbstractType
      *
      * The block prefix defaults to the underscored short class name with
      * the "Type" suffix removed (e.g. "UserProfileType" => "user_profile").
+     * @return string
      */
     public function getBlockPrefix(): string
     {

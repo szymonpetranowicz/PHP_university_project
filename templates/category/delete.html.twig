@@ -1,6 +1,6 @@
 {% include 'default/_form.html.twig' with {
-    page_title: 'Usuń kategorię'|trans({'%id%': category.id|default('')}),
+    page_title: 'title.category.delete'|trans({'%id%': category.id|default('')}),
     form: form,
-    submit_label: 'Usuń'|trans,
+    submit_label: 'edit'|trans,
     back_to_list_path: 'category_index',
 } %}

@@ -85,23 +85,22 @@ class BugController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}', name: 'bug_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET', )]
+    #[Route('/{id}', name: 'bug_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
     #[IsGranted('VIEW', subject: 'bug')]
     public function show(Bug $bug): Response
     {
-        if (null == $this->getUser()) {
-            $this->addFlash(
-                'warning',
-                $this->translator->trans('You are not able to reach this site')
+        if ($this->getUser()) {
+            return $this->render(
+                'bug/show.html.twig',
+                ['bug' => $bug]
             );
-
-            return $this->redirectToRoute('bug_index');
         }
-
-        return $this->render(
-            'bug/show.html.twig',
-            ['bug' => $bug]
+        $this->addFlash(
+            'warning',
+            $this->translator->trans('you.are.not.able.to.reach')
         );
+
+        return $this->redirectToRoute('bug_index');
     }
 
     /**
@@ -111,40 +110,42 @@ class BugController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/create', name: 'bug_create', methods: 'GET|POST', )]
+    #[Route('/create', name: 'bug_create', methods: 'GET|POST')]
     public function create(Request $request): Response
-    {   /** @var User $user */
+    {
+        /** @var User $user
+         *
+         */
         $user = $this->getUser();
-        if (null == $this->getUser()) {
-            $this->addFlash(
-                'warning',
-                $this->translator->trans('You are not able to reach this site')
-            );
+        if ($this->getUser()) {
+            $bug = new Bug();
+            $form = $this->createForm(BugType::class, $bug, ['action' => $this->generateUrl('bug_create')]);
+            $bug->setAuthor($user);
+            $bug->setCreatedAt(new \DateTimeImmutable());
+            $bug->setUpdatedAt(new \DateTimeImmutable());
+            $form->handleRequest($request);
 
-            return $this->redirectToRoute('bug_index');
+            if ($form->isSubmitted() && $form->isValid()) {
+                $this->bugService->save($bug);
+
+                $this->addFlash(
+                    'success',
+                    $this->translator->trans('created.successfully')
+                );
+
+                return $this->redirectToRoute('bug_index');
+            }
+
+            return $this->render('bug/create.html.twig', [
+                'form' => $form->createView(),
+            ]);
         }
-        $bug = new Bug();
-        $form = $this->createForm(BugType::class, $bug, ['action' => $this->generateUrl('bug_create')]);
-        $bug->setAuthor($user);
-        $bug->setCreatedAt(new \DateTimeImmutable());
-        $bug->setUpdatedAt(new \DateTimeImmutable());
-        $form->handleRequest($request);
+        $this->addFlash(
+            'warning',
+            $this->translator->trans('you.are.not.able.to.reach')
+        );
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->bugService->save($bug);
-
-            $this->addFlash(
-                'success',
-                $this->translator->trans('Created s
-                uccessfully')
-            );
-
-            return $this->redirectToRoute('bug_index');
-        }
-
-        return $this->render('bug/create.html.twig', [
-            'form' => $form->createView(),
-        ]);
+        return $this->redirectToRoute('bug_index');
     }
 
     /**
@@ -159,35 +160,36 @@ class BugController extends AbstractController
     #[Route('/{id}/edit', name: 'bug_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, Bug $bug): Response
     {
-        if (null == $this->getUser()) {
-            $this->addFlash(
-                'warning',
-                $this->translator->trans('You are not able to reach this site')
-            );
+        if ($this->getUser()) {
+            $form = $this->createForm(BugType::class, $bug, [
+                'method' => 'PUT',
+                'action' => $this->generateUrl('bug_edit', ['id' => $bug->getId()]),
+            ]);
+            $form->handleRequest($request);
 
-            return $this->redirectToRoute('bug_index');
+            if ($form->isSubmitted() && $form->isValid()) {
+                $this->bugService->save($bug);
+
+                $this->addFlash(
+                    'success',
+                    $this->translator->trans('editted.succesfully')
+                );
+
+                return $this->redirectToRoute('bug_index');
+            }
+
+            return $this->render('bug/edit.html.twig', [
+                'form' => $form->createView(),
+                'bug' => $bug,
+            ]);
         }
-        $form = $this->createForm(BugType::class, $bug, [
-            'method' => 'PUT',
-            'action' => $this->generateUrl('bug_edit', ['id' => $bug->getId()]),
-        ]);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->bugService->save($bug);
+        $this->addFlash(
+            'warning',
+            $this->translator->trans('you.are.not.able.to.reach')
+        );
 
-            $this->addFlash(
-                'success',
-                $this->translator->trans('Bug edited successfully')
-            );
-
-            return $this->redirectToRoute('bug_index');
-        }
-
-        return $this->render('bug/edit.html.twig', [
-            'form' => $form->createView(),
-            'bug' => $bug,
-        ]);
+        return $this->redirectToRoute('bug_index');
     }
 
     /**
@@ -202,35 +204,36 @@ class BugController extends AbstractController
     #[Route('/{id}/delete', name: 'bug_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Bug $bug): Response
     {
-        if (null == $this->getUser()) {
-            $this->addFlash(
-                'warning',
-                $this->translator->trans('You are not able to reach this site')
-            );
+        if ($this->getUser()) {
+            $form = $this->createForm(BugType::class, $bug, [
+                'method' => 'DELETE',
+                'action' => $this->generateUrl('bug_delete', ['id' => $bug->getId()]),
+            ]);
+            $form->handleRequest($request);
 
-            return $this->redirectToRoute('bug_index');
+            if ($form->isSubmitted() && $form->isValid()) {
+                $this->bugService->delete($bug);
+
+                $this->addFlash(
+                    'success',
+                    $this->translator->trans('deleted.successfully')
+                );
+
+                return $this->redirectToRoute('bug_index');
+            }
+
+            return $this->render('bug/delete.html.twig', [
+                'form' => $form->createView(),
+                'bug' => $bug,
+            ]);
         }
-        $form = $this->createForm(BugType::class, $bug, [
-            'method' => 'DELETE',
-            'action' => $this->generateUrl('bug_delete', ['id' => $bug->getId()]),
-        ]);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->bugService->delete($bug);
+        $this->addFlash(
+            'warning',
+            $this->translator->trans('you.are.not.able.to.reach')
+        );
 
-            $this->addFlash(
-                'success',
-                $this->translator->trans('Deleted successfully')
-            );
-
-            return $this->redirectToRoute('bug_index');
-        }
-
-        return $this->render('bug/delete.html.twig', [
-            'form' => $form->createView(),
-            'bug' => $bug,
-        ]);
+        return $this->redirectToRoute('bug_index');
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Bug service interface.
  */
@@ -16,8 +17,8 @@ interface BugServiceInterface
     /**
      * Get paginated list.
      *
-     * @param array<string, int> $filters Filters array
      * @param int                $page    Page number
+     * @param array<string, int> $filters Filters array
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */

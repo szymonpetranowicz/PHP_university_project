@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Bug voter.
  */

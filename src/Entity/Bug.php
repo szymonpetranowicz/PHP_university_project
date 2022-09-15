@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Bug entity.
  */
@@ -21,8 +22,6 @@ class Bug
 {
     /**
      * Primary key.
-     *
-     * @var int|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -32,8 +31,6 @@ class Bug
     /**
      * Created at.
      *
-     * @var DateTimeImmutable|null
-     *
      * @psalm-suppress PropertyNotSetInConstructor
      */
     #[ORM\Column(type: 'datetime_immutable')]
@@ -42,8 +39,6 @@ class Bug
     /**
      * Updated at.
      *
-     * @var DateTimeImmutable|null
-     *
      * @psalm-suppress PropertyNotSetInConstructor
      */
     #[ORM\Column(type: 'datetime_immutable')]
@@ -51,8 +46,6 @@ class Bug
 
     /**
      * Title.
-     *
-     * @var string|null
      */
     #[ORM\Column(type: 'string', length: 255)]
     private ?string $title = null;
@@ -65,8 +58,6 @@ class Bug
 
     /**
      * Category.
-     *
-     * @var Category
      */
     #[ORM\ManyToOne(targetEntity: Category::class)]
     #[ORM\JoinColumn(nullable: false)]
@@ -74,8 +65,6 @@ class Bug
 
     /**
      * Author.
-     *
-     * @var User|null
      */
     #[ORM\ManyToOne(targetEntity: User::class, fetch: 'EXTRA_LAZY')]
     #[ORM\JoinColumn(nullable: false)]
@@ -153,11 +142,19 @@ class Bug
         $this->title = $title;
     }
 
+    /**
+     * @return string
+     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
+    /**
+     * @param $description
+     *
+     * @return string
+     */
     public function setDescription(string $description): self
     {
         $this->description = $description;
@@ -165,11 +162,19 @@ class Bug
         return $this;
     }
 
+    /**
+     * @return bool
+     */
     public function getStatus(): ?bool
     {
         return $this->status;
     }
 
+    /**
+     *@param $status
+     *
+     * @return bool
+     */
     public function setStatus(bool $status): self
     {
         $this->status = $status;
@@ -177,11 +182,20 @@ class Bug
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getCategory(): ?Category
     {
         return $this->category;
     }
 
+    /**
+     *@param $category
+
+     *
+     * @return string
+     */
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
@@ -189,11 +203,19 @@ class Bug
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getAuthor(): ?User
     {
         return $this->author;
     }
 
+    /**
+     * @param $author
+     *
+     * @return string
+     */
     public function setAuthor(?User $author): self
     {
         $this->author = $author;

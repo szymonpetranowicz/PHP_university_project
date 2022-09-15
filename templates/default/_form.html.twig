@@ -18,7 +18,7 @@ parameters:
     {% if false == form.vars.valid %}
         {% include 'default/_single_alert_message.html.twig' with {
             type: 'danger',
-            message: 'Something goes wrong'|trans,
+            message: 'something.goes.wrong'|trans,
         }%}
     {% endif %}
     {{ form_widget(form) }}
@@ -28,7 +28,7 @@ parameters:
     {% if back_to_list_path|default(false) %}
         <div class="form-group row float-sm-left">
             <a href="{{ url(back_to_list_path) }}" class="btn btn-link">
-                {{ 'Wróć'|trans }}
+                {{ 'back'|trans }}
             </a>
         </div>
     {% endif %}

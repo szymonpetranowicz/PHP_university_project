@@ -15,16 +15,16 @@
 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
     <div>
-        <a class="btn btn-outline-danger" href="{{ url('app_logout') }}">{{ 'Wyloguj'|trans }}</a>
+        <a class="btn btn-outline-danger" href="{{ url('app_logout') }}">{{ 'logout'|trans }}</a>
         <div>Zalogowany jako: {{ app.user.email }}</div>
     </div>
 {% else %}
     <div>
-        <a class="btn btn-outline-success"  href="{{ url('app_login') }}">{{ 'Zaloguj'|trans }}</a>
+        <a class="btn btn-outline-success"  href="{{ url('app_login') }}">{{ 'sing.up'|trans }}</a>
     </div>
 {% endif %}
-<a class="btn btn-outline-primary" href="{{ url('bug_index')}}" title="{{ 'Utwórz'|trans }}">
-    {{ 'Strona główna'|trans }}
+<a class="btn btn-outline-primary" href="{{ url('bug_index')}}" title="{{ 'create'|trans }}">
+    {{ 'homepage'|trans }}
 </a>
 <div class="container">
     <div class="center">

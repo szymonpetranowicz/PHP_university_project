@@ -1,4 +1,5 @@
 <?php
+
 /**
  * User type.
  */
@@ -22,6 +23,7 @@ class UserType extends AbstractType
      * This method is called for each type in the hierarchy starting from the
      * top most type. Type extensions can further modify the form.
      *
+     * @param FormBuilderInterface $builder
      * @param array<string, mixed> $options
      *
      * @see FormTypeExtensionInterface::buildForm()
@@ -35,11 +37,13 @@ class UserType extends AbstractType
                 'label' => 'Nowe hasło:',
                 'required' => true,
                 'attr' => ['max_length' => 64],
-            ]);
+            ]
+        );
     }
 
     /**
-     * Configures the options for this type.
+     * @param optionsResolver $resolver
+     *                                  Configures the options for this type
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
@@ -51,6 +55,7 @@ class UserType extends AbstractType
      *
      * The block prefix defaults to the underscored short class name with
      * the "Type" suffix removed (e.g. "UserProfileType" => "user_profile").
+     * @return string
      */
     public function getBlockPrefix(): string
     {
