@@ -98,22 +98,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\SecurityController",
             "name": "SecurityController",
-            "summary": "",
+            "summary": "SecurityController\u0020Class.",
             "url": "classes/App-Controller-SecurityController.html"
         },                {
             "fqsen": "\\App\\Controller\\SecurityController\u003A\u003Alogin\u0028\u0029",
             "name": "login",
-            "summary": "",
+            "summary": "Login\u0020action.",
             "url": "classes/App-Controller-SecurityController.html#method_login"
         },                {
             "fqsen": "\\App\\Controller\\SecurityController\u003A\u003Alogout\u0028\u0029",
             "name": "logout",
-            "summary": "",
+            "summary": "Login\u0020action.",
             "url": "classes/App-Controller-SecurityController.html#method_logout"
         },                {
             "fqsen": "\\App\\Controller\\UserController",
             "name": "UserController",
-            "summary": "",
+            "summary": "UserController\u0020Class.",
             "url": "classes/App-Controller-UserController.html"
         },                {
             "fqsen": "\\App\\Controller\\UserController\u003A\u003A__construct\u0028\u0029",
@@ -518,12 +518,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Faker\\Provider\\ImmutableDateTime",
             "name": "ImmutableDateTime",
-            "summary": "",
+            "summary": "ImmutableDateTime\u0020class.",
             "url": "classes/App-Faker-Provider-ImmutableDateTime.html"
         },                {
             "fqsen": "\\App\\Faker\\Provider\\ImmutableDateTime\u003A\u003AimmutableDateTimeBetween\u0028\u0029",
             "name": "immutableDateTimeBetween",
-            "summary": "",
+            "summary": "ImmutableDateTime\u0020function.",
             "url": "classes/App-Faker-Provider-ImmutableDateTime.html#method_immutableDateTimeBetween"
         },                {
             "fqsen": "\\App\\Form\\Type\\BugType",
@@ -538,7 +538,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Form\\Type\\BugType\u003A\u003AconfigureOptions\u0028\u0029",
             "name": "configureOptions",
-            "summary": "Configures\u0020the\u0020options\u0020for\u0020this\u0020type.",
+            "summary": "",
             "url": "classes/App-Form-Type-BugType.html#method_configureOptions"
         },                {
             "fqsen": "\\App\\Form\\Type\\BugType\u003A\u003AgetBlockPrefix\u0028\u0029",
@@ -558,7 +558,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Form\\Type\\CategoryType\u003A\u003AconfigureOptions\u0028\u0029",
             "name": "configureOptions",
-            "summary": "Configures\u0020the\u0020options\u0020for\u0020this\u0020type.",
+            "summary": "",
             "url": "classes/App-Form-Type-CategoryType.html#method_configureOptions"
         },                {
             "fqsen": "\\App\\Form\\Type\\CategoryType\u003A\u003AgetBlockPrefix\u0028\u0029",
@@ -578,7 +578,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Form\\Type\\UserType\u003A\u003AconfigureOptions\u0028\u0029",
             "name": "configureOptions",
-            "summary": "Configures\u0020the\u0020options\u0020for\u0020this\u0020type.",
+            "summary": "",
             "url": "classes/App-Form-Type-UserType.html#method_configureOptions"
         },                {
             "fqsen": "\\App\\Form\\Type\\UserType\u003A\u003AgetBlockPrefix\u0028\u0029",
@@ -588,7 +588,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Kernel",
             "name": "Kernel",
-            "summary": "",
+            "summary": "Class\u0020Kernel.",
             "url": "classes/App-Kernel.html"
         },                {
             "fqsen": "\\App\\Repository\\BugRepository",
@@ -621,11 +621,6 @@ Search.appendIndex(
             "summary": "Delete\u0020entity.",
             "url": "classes/App-Repository-BugRepository.html#method_delete"
         },                {
-            "fqsen": "\\App\\Repository\\BugRepository\u003A\u003AgetOrCreateQueryBuilder\u0028\u0029",
-            "name": "getOrCreateQueryBuilder",
-            "summary": "Get\u0020or\u0020create\u0020new\u0020query\u0020builder.",
-            "url": "classes/App-Repository-BugRepository.html#method_getOrCreateQueryBuilder"
-        },                {
             "fqsen": "\\App\\Repository\\BugRepository\u003A\u003AqueryByAuthor\u0028\u0029",
             "name": "queryByAuthor",
             "summary": "Query\u0020tasks\u0020by\u0020author.",
@@ -635,6 +630,11 @@ Search.appendIndex(
             "name": "applyFiltersToList",
             "summary": "Apply\u0020filters\u0020to\u0020paginated\u0020list.",
             "url": "classes/App-Repository-BugRepository.html#method_applyFiltersToList"
+        },                {
+            "fqsen": "\\App\\Repository\\BugRepository\u003A\u003AgetOrCreateQueryBuilder\u0028\u0029",
+            "name": "getOrCreateQueryBuilder",
+            "summary": "Get\u0020or\u0020create\u0020new\u0020query\u0020builder.",
+            "url": "classes/App-Repository-BugRepository.html#method_getOrCreateQueryBuilder"
         },                {
             "fqsen": "\\App\\Repository\\BugRepository\u003A\u003APAGINATOR_ITEMS_PER_PAGE",
             "name": "PAGINATOR_ITEMS_PER_PAGE",
@@ -651,16 +651,6 @@ Search.appendIndex(
             "summary": "Constructor.",
             "url": "classes/App-Repository-CategoryRepository.html#method___construct"
         },                {
-            "fqsen": "\\App\\Repository\\CategoryRepository\u003A\u003AqueryAll\u0028\u0029",
-            "name": "queryAll",
-            "summary": "Query\u0020all\u0020records.",
-            "url": "classes/App-Repository-CategoryRepository.html#method_queryAll"
-        },                {
-            "fqsen": "\\App\\Repository\\CategoryRepository\u003A\u003AgetOrCreateQueryBuilder\u0028\u0029",
-            "name": "getOrCreateQueryBuilder",
-            "summary": "Get\u0020or\u0020create\u0020new\u0020query\u0020builder.",
-            "url": "classes/App-Repository-CategoryRepository.html#method_getOrCreateQueryBuilder"
-        },                {
             "fqsen": "\\App\\Repository\\CategoryRepository\u003A\u003Asave\u0028\u0029",
             "name": "save",
             "summary": "Save\u0020entity.",
@@ -670,6 +660,16 @@ Search.appendIndex(
             "name": "delete",
             "summary": "Delete\u0020entity.",
             "url": "classes/App-Repository-CategoryRepository.html#method_delete"
+        },                {
+            "fqsen": "\\App\\Repository\\CategoryRepository\u003A\u003AqueryAll\u0028\u0029",
+            "name": "queryAll",
+            "summary": "Query\u0020all\u0020records.",
+            "url": "classes/App-Repository-CategoryRepository.html#method_queryAll"
+        },                {
+            "fqsen": "\\App\\Repository\\CategoryRepository\u003A\u003AgetOrCreateQueryBuilder\u0028\u0029",
+            "name": "getOrCreateQueryBuilder",
+            "summary": "Get\u0020or\u0020create\u0020new\u0020query\u0020builder.",
+            "url": "classes/App-Repository-CategoryRepository.html#method_getOrCreateQueryBuilder"
         },                {
             "fqsen": "\\App\\Repository\\CategoryRepository\u003A\u003APAGINATOR_ITEMS_PER_PAGE",
             "name": "PAGINATOR_ITEMS_PER_PAGE",
@@ -708,7 +708,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Repository\\UserRepository\u003A\u003APAGINATOR_ITEMS_PER_PAGE",
             "name": "PAGINATOR_ITEMS_PER_PAGE",
-            "summary": "",
+            "summary": "Items\u0020per\u0020page.",
             "url": "classes/App-Repository-UserRepository.html#constant_PAGINATOR_ITEMS_PER_PAGE"
         },                {
             "fqsen": "\\App\\Security\\LoginFormAuthenticator",
@@ -766,20 +766,10 @@ Search.appendIndex(
             "summary": "Perform\u0020a\u0020single\u0020access\u0020check\u0020operation\u0020on\u0020a\u0020given\u0020attribute,\u0020subject\u0020and\u0020token.",
             "url": "classes/App-Security-Voter-BugVoter.html#method_voteOnAttribute"
         },                {
-            "fqsen": "\\App\\Security\\Voter\\BugVoter\u003A\u003AcanEdit\u0028\u0029",
-            "name": "canEdit",
-            "summary": "Checks\u0020if\u0020user\u0020can\u0020edit\u0020bug.",
-            "url": "classes/App-Security-Voter-BugVoter.html#method_canEdit"
-        },                {
             "fqsen": "\\App\\Security\\Voter\\BugVoter\u003A\u003AcanView\u0028\u0029",
             "name": "canView",
             "summary": "Checks\u0020if\u0020user\u0020can\u0020view\u0020bug.",
             "url": "classes/App-Security-Voter-BugVoter.html#method_canView"
-        },                {
-            "fqsen": "\\App\\Security\\Voter\\BugVoter\u003A\u003AcanDelete\u0028\u0029",
-            "name": "canDelete",
-            "summary": "Checks\u0020if\u0020user\u0020can\u0020delete\u0020bug.",
-            "url": "classes/App-Security-Voter-BugVoter.html#method_canDelete"
         },                {
             "fqsen": "\\App\\Security\\Voter\\BugVoter\u003A\u003AEDIT",
             "name": "EDIT",
@@ -928,7 +918,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Service\\UserService",
             "name": "UserService",
-            "summary": "",
+            "summary": "UserService\u0020class.",
             "url": "classes/App-Service-UserService.html"
         },                {
             "fqsen": "\\App\\Service\\UserService\u003A\u003A__construct\u0028\u0029",
@@ -943,7 +933,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Service\\UserService\u003A\u003AupgradePassword\u0028\u0029",
             "name": "upgradePassword",
-            "summary": "Used\u0020to\u0020upgrade\u0020\u0028rehash\u0029\u0020the\u0020user\u0027s\u0020password\u0020automatically\u0020over\u0020time.",
+            "summary": "",
             "url": "classes/App-Service-UserService.html#method_upgradePassword"
         },                {
             "fqsen": "\\App\\Service\\UserService\u003A\u003A\u0024paginator",
@@ -958,7 +948,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Service\\UserServiceInterface",
             "name": "UserServiceInterface",
-            "summary": "",
+            "summary": "User\u0020service\u0020interface.",
             "url": "classes/App-Service-UserServiceInterface.html"
         },                {
             "fqsen": "\\App\\Service\\UserServiceInterface\u003A\u003AgetPaginatedList\u0028\u0029",
