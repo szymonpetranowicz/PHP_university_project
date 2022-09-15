@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="pl" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="you.are.not.able.to.reach">
+                <source>you.are.not.able.to.reach</source>
+                <target>You are not able to reach this site</target>
+            </trans-unit>
+            <trans-unit id="created.successfully">
+                <source>created.successfully</source>
+                <target>Created successffully</target>
+            </trans-unit>
+            <trans-unit id="editted.succesfully">
+                <source>editted.succesfully</source>
+                <target>Edited successffully</target>
+            </trans-unit>
+            <trans-unit id="deleted.successfully">
+                <source>deleted.successfully</source>
+                <target>Deleted successfully</target>
+            </trans-unit>
+            <trans-unit id="added.successfully">
+                <source>added.successfully</source>
+                <target>Added successfully</target>
+            </trans-unit>
+            <trans-unit id="edited.successfully">
+                <source>edited.successfully</source>
+                <target>Edited successfully</target>
+            </trans-unit>
+            <trans-unit id="category.contains.bug">
+                <source>category.contains.bug</source>
+                <target>Category contains bugs</target>
+            </trans-unit>
+            <trans-unit id="something.goes.wrong">
+                <source>something.goes.wrong</source>
+                <target>Something goes wrong</target>
+            </trans-unit>
+            <trans-unit id="back">
+                <source>back</source>
+                <target>Back</target>
+            </trans-unit>
+            <trans-unit id="edit">
+                <source>edit</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="administration">
+                <source>administration</source>
+                <target>Administration</target>
+            </trans-unit>
+            <trans-unit id="action.edit">
+                <source>action.edit</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="action.create">
+                <source>action.create</source>
+                <target>Create</target>
+            </trans-unit>
+            <trans-unit id="categories">
+                <source>categories</source>
+                <target>Categories</target>
+            </trans-unit>
+            <trans-unit id="bugs">
+                <source>bugs</source>
+                <target>Bugs</target>
+            </trans-unit>
+            <trans-unit id="message.empty_list">
+                <source>message.empty_list</source>
+                <target>Empty list</target>
+            </trans-unit>
+            <trans-unit id="title.bug.delete">
+                <source>title.bug.delete</source>
+                <target>Delete bug</target>
+            </trans-unit>
+            <trans-unit id="delete">
+                <source>delete</source>
+                <target>Delete</target>
+            </trans-unit>
+            <trans-unit id="bug">
+                <source>bug</source>
+                <target>Bug</target>
+            </trans-unit>
+            <trans-unit id="id">
+                <source>id</source>
+                <target>Id</target>
+            </trans-unit>
+            <trans-unit id="createdAt">
+                <source>createdAt</source>
+                <target>Created at</target>
+            </trans-unit>
+            <trans-unit id="updatedAt">
+                <source>updatedAt</source>
+                <target>Updated at</target>
+            </trans-unit>
+            <trans-unit id="title">
+                <source>title</source>
+                <target>Title</target>
+            </trans-unit>
+            <trans-unit id="description">
+                <source>description</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="category">
+                <source>category</source>
+                <target>Category</target>
+            </trans-unit>
+            <trans-unit id="status">
+                <source>status</source>
+                <target>Status</target>
+            </trans-unit>
+            <trans-unit id="empty.list">
+                <source>empty.list</source>
+                <target>Empty list</target>
+            </trans-unit>
+            <trans-unit id="title.bug.create">
+                <source>title.bug.create</source>
+                <target>Create bug</target>
+            </trans-unit>
+            <trans-unit id="save">
+                <source>save</source>
+                <target>Save</target>
+            </trans-unit>
+            <trans-unit id="title.bug.edit">
+                <source>title.bug.edit</source>
+                <target>Edit bug</target>
+            </trans-unit>
+            <trans-unit id="title.bug.index">
+                <source>title.bug.index</source>
+                <target>Bugs</target>
+            </trans-unit>
+            <trans-unit id="header.bug">
+                <source>header.bug</source>
+                <target>Bugs</target>
+            </trans-unit>
+            <trans-unit id="action">
+                <source>action</source>
+                <target>Action</target>
+            </trans-unit>
+            <trans-unit id="action.show">
+                <source>action.show</source>
+                <target>Show</target>
+            </trans-unit>
+            <trans-unit id="show">
+                <source>show</source>
+                <target>Show</target>
+            </trans-unit>
+            <trans-unit id="action.delete">
+                <source>action.delete</source>
+                <target>Delete</target>
+            </trans-unit>
+            <trans-unit id="new.bug">
+                <source>new.bug</source>
+                <target>New Bug</target>
+            </trans-unit>
+            <trans-unit id="new.category">
+                <source>new.category</source>
+                <target>New category</target>
+            </trans-unit>
+            <trans-unit id="users">
+                <source>users</source>
+                <target>Users</target>
+            </trans-unit>
+            <trans-unit id="logout">
+                <source>logout</source>
+                <target>Logout</target>
+            </trans-unit>
+            <trans-unit id="sing.up">
+                <source>sing.up</source>
+                <target>Sing up</target>
+            </trans-unit>
+            <trans-unit id="create">
+                <source>create</source>
+                <target>Create</target>
+            </trans-unit>
+            <trans-unit id="homepage">
+                <source>homepage</source>
+                <target>Homepage</target>
+            </trans-unit>
+            <trans-unit id="title.category.delete">
+                <source>title.category.delete</source>
+                <target>Delete category</target>
+            </trans-unit>
+            <trans-unit id="title.category.show">
+                <source>title.category.show</source>
+                <target>Show Category</target>
+            </trans-unit>
+            <trans-unit id="action.back_to_list">
+                <source>action.back_to_list</source>
+                <target>Back to list</target>
+            </trans-unit>
+            <trans-unit id="title.category.create">
+                <source>title.category.create</source>
+                <target>Create category</target>
+            </trans-unit>
+            <trans-unit id="title.category.edit">
+                <source>title.category.edit</source>
+                <target>Edit category</target>
+            </trans-unit>
+            <trans-unit id="title.category.index">
+                <source>title.category.index</source>
+                <target>Categories</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
